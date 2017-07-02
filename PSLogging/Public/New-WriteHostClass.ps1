@@ -1,5 +1,20 @@
 ﻿function New-WriteHostClass
 {
+    <#
+        .SYNOPSIS
+
+        .DESCRIPTION
+
+        .PARAMETER LogFile
+
+        .INPUTS
+
+        .OUTPUTS
+
+        .EXAMPLE
+
+        .NOTES
+    #>
     [CmdletBinding()]
     [Alias()]
     [OutputType()]

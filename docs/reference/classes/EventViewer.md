@@ -26,18 +26,18 @@ $EventViewrLogging = [EventViewer]::new('Some LogName','Some LogSource', 'c:\pat
 The EventViewer Class has multiple settings and configurations that you can use.  After creating your new variable ($EventViewerLogging) you can use it to log information to the event viewer.  There are several overload defintions for each of the logging types listed above and here for reference:
 ```
         Informational (Info)
-	Success (Success)
-	Warning (Warning)
+        Success (Success)
+        Warning (Warning)
         Debugging (Debug)
         Error (Error)
-	Error (Error & ErrorRecord)
+        Error (Error & ErrorRecord)
 ```
 Each of the overload definitions for the Event Viewer portion of this class allow you to specify differnt parameters.  These paramters are outlined here:
 ```
-	LogMessage
-	LogMessage, EventID
-	LogMessage, EntryType
-	LogMessage, EntryType, EventID
+    LogMessage
+    LogMessage, EventID
+    LogMessage, EntryType
+    LogMessage, EntryType, EventID
 ```
 I have include some examples below on using these different paramters and overload methods for each of the logging types (not all are listed).
 
@@ -52,14 +52,14 @@ $EventViewerLogging.Debug('Logging to Some LogSource as debug text', 'Debug', '1
 
 If you are wanting to log errors specifically, then you have some additional overload methods available to you.  ALL overload methods/definitions are listed here for convience:
 ```
-	ErrorMessage
-	ErrorMessage, EventID
-	ErrorMessage, EntryType
-	ErrorMessage, EntryType, EventID
-	ErrorMessage, ErrorRecord
-	ErrorMessage, ErrorRecord, EventID
-	ErrorMessage, ErrorRecord, EntryType
-	ErrorMessage, ErrorRecord, EntryType, EventID
+    ErrorMessage
+    ErrorMessage, EventID
+    ErrorMessage, EntryType
+    ErrorMessage, EntryType, EventID
+    ErrorMessage, ErrorRecord
+    ErrorMessage, ErrorRecord, EventID
+    ErrorMessage, ErrorRecord, EntryType
+    ErrorMessage, ErrorRecord, EntryType, EventID
 ```
 ### EXAMPLE of using $EventViewerLogging with Error Records
 
