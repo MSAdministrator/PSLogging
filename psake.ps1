@@ -73,6 +73,32 @@ Task Compile -depends Clean {
     If (Test-Path $ProjectRoot/media) {
         Copy-Item -Path $ProjectRoot/media -Destination $CompilingFolder -Recurse -Container -Force
     }
+    Write-Host -ForegroundColor DarkMagenta "Generating function reference documents..."
+    Import-Module PlatyPS
+    $Module = Import-Module "$env:BHModulePath" -Scope Global -PassThru
+    $HelpParameters = @{
+        Module       = (Get-Module $env:BHProjectName)
+        OutputFolder = "$CompilingFolder/reference/functions"
+        NoMetadata   = $true
+    }
+    $null = New-MarkdownHelp @HelpParameters
+    $FunctionReferenceReadmePath = "$CompilingFolder/reference/functions/readme.md "
+    $FunctionReferenceReadmeValue = @(
+        "---"
+        "Module Name: $($Module.Name)"
+        "Module Guid: $($Module.Guid)"
+        "Help Version: $($Module.Version)"
+        "Locale: en-US"
+        "---"
+        "# Function Reference"
+        "The following chapters provide the online help for the public functions of the $env:BHProjectName module"
+        "$(Get-Command -Module $env:BHProjectName | ForEach-Object {
+            $Info = Get-Help $PSItem
+            "# [``$($Info.Name)``]($($Info.Name).md)`r`n$($Info.Synopsis)`r`n"
+        })"
+    )
+    $null = New-Item -Path $FunctionReferenceReadmePath -Value ($FunctionReferenceReadmeValue -join("`r`n"))
+    Remove-Module $env:BHProjectName
     Push-Location -Path $CompilingFolder
     book sm
     gitbook install
