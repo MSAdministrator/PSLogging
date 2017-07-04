@@ -4,30 +4,31 @@
         .SYNOPSIS
          To use the [EventViewer] Class you need to either call the New-EventViewerClass.ps1 or by loading the entire PSLogging class in the 'Class' folder. 
         .DESCRIPTION
-         Placeholder
+         This function will create a new [EventViewer] class object and return it to the calling scope.
 
         .PARAMETER LogName
-        Placeholder
+         LogName is the Event Viewer folder name you want your logs to go to
 
         .PARAMETER LogSource
-        Placeholder
-
-        .PARAMETER LogName
-        Placeholder
+         LogSource is the name displayed in each event's source column in the Event Viewer
 
         .INPUTS
-        Placeholder
+         PSCustomObject
+
+         You can create a custom hashtable or object and pipe it into this function
 
         .OUTPUTS
-        Placeholder
+         [EventViewer] 
+
+         This function will return a [EventViewer] class object
 
         .EXAMPLE
-         $EventViewerLogging = New-EventViewerClass -LogName 'Some LogName' -LogSource 'Some LogSource'
+         C:\PS> $EventViewerLogging = New-EventViewerClass -LogName 'Some LogName or Event Viewer folder' -LogSource 'Some LogSource'
 
          By calling the New-EventViewerClass function directly, it will return a [EventViewer] data type that can now be used to log to
 
         .NOTES
-        Placeholder
+         New-EventViewerClass will return a class object that can be used to log to the Event Viewer Log
     #>
 
     [CmdletBinding()]
