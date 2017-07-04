@@ -1,5 +1,28 @@
 ﻿function New-LogFileClass
 {
+    <#
+        .SYNOPSIS
+        Placeholder
+
+        .DESCRIPTION
+        Placeholder
+
+        .PARAMETER LogFile
+        Placeholder
+
+        .INPUTS
+        Placeholder
+
+        .OUTPUTS
+        Placeholder
+
+        .EXAMPLE
+        Placeholder
+
+        .NOTES
+        Placeholder
+    #>
+    
     [CmdletBinding()]
     [Alias()]
     [OutputType()]

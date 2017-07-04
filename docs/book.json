@@ -1,0 +1,10 @@
+{
+    "title": "PSLogging",
+    "description": "A PowerShell Logging Module that uses Classes to log to the console, log file, or the event viewer.",
+    "author": "Josh Rickard",
+    "language": "en",
+    "plugins": [
+        "html5-video",
+        "expandable-chapters-small"
+    ]
+}
