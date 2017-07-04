@@ -2,37 +2,29 @@
 {
     <#
         .SYNOPSIS
-        Placeholder
-
+         To use the [WriteHost] Class you need to either call the New-WriteHostClass.ps1 or by loading the entire PSLogging class in the 'Class' folder. 
+        
         .DESCRIPTION
-        Placeholder
-
-        .PARAMETER LogFile
-        Placeholder
-
-        .INPUTS
-        Placeholder
+         This function will create a new [WriteHost] class object and return it to the calling scope.
 
         .OUTPUTS
-        Placeholder
+         [WriteHost] 
 
-        .EXAMPLE
-        Placeholder
+         This function will return a [WriteHost] class object
+
+        .EXAMPLE 1
+         C:\PS> $WriteHostLogging = New-WriteHostClass
+
+         By calling the New-WriteHostlass function directly, it will return a [WriteHost] data type that can now be used to log to the console
 
         .NOTES
-        Placeholder
+         New-WriteHostClass will return a class object that can be used to log to the console
     #>
     [CmdletBinding()]
     [Alias()]
     [OutputType()]
     Param
-    (
-        # Param1 help description
-        [Parameter(Mandatory=$true,
-                   ValueFromPipelineByPropertyName=$true,
-                   Position=0)]
-        $LogFile
-    )
+    ()
 
   return [WriteHost]::new()
 }
