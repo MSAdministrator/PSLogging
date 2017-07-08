@@ -28,7 +28,7 @@ Error (Error & ErrorRecord)
 ```
 
 Outlined below is the default colors associated with each log level in the WriteHost class:
-```
+
 |**Log Level**|**Class Property**|**Color**|
 |:-----------:|:----------------:|:-------:|
 |Informational|InfoColor         |Cyan     |
@@ -36,7 +36,7 @@ Outlined below is the default colors associated with each log level in the Write
 |Warning      |WarningColor      |Yellow   |
 |Debug        |DebugColor        |Yellow   |
 |Error        |ErrorColor        |Red      |
-```
+
 You can change the specified color you would like to output with by following the examples below:
 ```
 $WriteHostLogging = [WriteHost]::new()
