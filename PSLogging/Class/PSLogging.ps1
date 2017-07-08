@@ -27,37 +27,37 @@ class Log
 
     [string] Info([String] $msg)
     {
-        $info = "$((Get-Date).ToString('yyyyMMddThhmmss')) [INFO]: $msg"
+        $info = "$((Get-Date).ToString('yyyy-MM-ddTHH:mm:ss')) [INFO]: $msg"
         return $info
     }
 
     [string] Success([String] $msg) 
     {
-        $Success = "$((Get-Date).ToString('yyyyMMddThhmmss')) [SUCCESS]: $msg"
+        $Success = "$((Get-Date).ToString('yyyy-MM-ddTHH:mm:ss')) [SUCCESS]: $msg"
         return $Success
     }
 
     [string] Warning([String] $msg)
     {
-        $Warning = "$((Get-Date).ToString('yyyyMMddThhmmss')) [WARNING]: $msg"
+        $Warning = "$((Get-Date).ToString('yyyy-MM-ddTHH:mm:ss')) [WARNING]: $msg"
         return $Warning
     }
 
     [string] Debug([String] $msg)
     {
-        $Debug = "$((Get-Date).ToString('yyyyMMddThhmmss')) [DEBUG]: $msg"
+        $Debug = "$((Get-Date).ToString('yyyy-MM-ddTHH:mm:ss')) [DEBUG]: $msg"
         return $Debug
     }
 
     [string] Error([String] $msg)
     {
-        $Error = "$((Get-Date).ToString('yyyyMMddThhmmss')) [ERROR]: $msg"
+        $Error = "$((Get-Date).ToString('yyyy-MM-ddTHH:mm:ss')) [ERROR]: $msg"
         return $Error
     }
 
     [string] Error([System.Management.Automation.ErrorRecord] $ErrorRecord)
     {
-        $ErrorMessage = '{0} {1} ({2}: {3}:{4} char:{5})' -f "$((Get-Date).ToString('yyyyMMddThhmmss')) [ERROR_RECORD]",
+        $ErrorMessage = '{0} {1} ({2}: {3}:{4} char:{5})' -f "$((Get-Date).ToString('yyyy-MM-ddTHH:mm:ss')) [ERROR_RECORD]",
                                                              $ErrorRecord.Exception.Message,
                                                              $ErrorRecord.FullyQualifiedErrorId,
                                                              $ErrorRecord.InvocationInfo.ScriptName,
