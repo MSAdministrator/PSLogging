@@ -49,5 +49,22 @@
         [string]$LogSource
     )
 
-  return [EventViewer]::new($LogName, $LogSource)
+    Write-Verbose -Message 'Creating new EventViewer Class Object'
+
+    if ([Diagnostics.EventLog]::SourceExists($LogSource))
+    {
+        $confirmation = Read-Host "The LogSource $LogSource already exists. Are you Sure You Want To Proceed:"
+        if ($confirmation -eq 'y') 
+        {
+            return [EventViewer]::new($LogName, $LogSource)
+        }
+        else
+        {
+            return $null    
+        }
+    }
+    else
+    {
+        return [EventViewer]::new($LogName, $LogSource)
+    }
 }
