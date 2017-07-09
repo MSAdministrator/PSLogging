@@ -41,10 +41,12 @@
     (
         # Param1 help description
         [Parameter(Mandatory=$true,
-                   ValueFromPipelineByPropertyName=$true,
+                   ValueFromPipeline=$true,
                    Position=0)]
         $LogFile
     )
+
+    Write-Verbose -Message 'Creating new LogFile Class object'
 
   return [LogFile]::new($LogFile)
 }
