@@ -26,5 +26,7 @@
     Param
     ()
 
+    Write-Verbose -Message 'Creating new WriteHost Class Object'
+
   return [WriteHost]::new()
 }
