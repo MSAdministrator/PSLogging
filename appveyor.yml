@@ -28,4 +28,4 @@ build: false
 
 #Kick off the CI/CD pipeline
 test_script:
-- ps: . .\Tests\CreateProfile.Tests.ps1
+- ps: . .\Tests\PSLogging.Tests.ps1
