@@ -48,5 +48,5 @@
 
     Write-Verbose -Message 'Creating new LogFile Class object'
 
-  return [LogFile]::new($LogFile)
+    return [LogFile]::new($LogFile)
 }
