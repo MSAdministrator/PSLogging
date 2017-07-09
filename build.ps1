@@ -1,7 +1,7 @@
 [cmdletbinding()]
 Param (
     [string]$ApiKey,
-    [string[]]$PowerShellModules = @("Pester","Psake","BuildHelpers","Plaster","PlatyPS"),
+    [string[]]$PowerShellModules = @("Pester","Psake","BuildHelpers","Plaster","PlatyPS","PSDeploy","PSScriptAnalyzer"),
     [string[]]$PackageProviders   = @('NuGet','PowerShellGet'),
     [string[]]$TaskList
 )
