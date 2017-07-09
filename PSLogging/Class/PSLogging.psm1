@@ -89,7 +89,7 @@ class EventViewer : Log
         $this.LogName   = $LogName
         $this.LogSource = $LogSource
 
-        if([System.Diagnostics.EventLog]::Exists($LogSource))
+        if(!([System.Diagnostics.EventLog]::SourceExists($LogSource)))
         {
             $params = @{
                 LogName               = $this.LogName
@@ -106,7 +106,10 @@ class EventViewer : Log
 
     EventViewer([string]$LogName, [string]$LogSource, [boolean]$ResourceFile)
     {
-        if([System.Diagnostics.EventLog]::Exists($LogSource))
+        $this.LogName   = $LogName
+        $this.LogSource = $LogSource
+
+        if(!([System.Diagnostics.EventLog]::SourceExists($LogSource)))
         {
             $params = @{
                 LogName               = $LogName
@@ -129,7 +132,10 @@ class EventViewer : Log
 
     EventViewer([string]$LogName, [string]$LogSource, [string[]]$ComputerName)
     {
-        if([System.Diagnostics.EventLog]::Exists($LogSource))
+        $this.LogName   = $LogName
+        $this.LogSource = $LogSource
+
+        if(!([System.Diagnostics.EventLog]::SourceExists($LogSource)))
         {
             $params = @{
                 LogName               = $LogName
