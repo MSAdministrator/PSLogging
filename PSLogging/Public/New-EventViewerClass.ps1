@@ -54,6 +54,7 @@
     if ([Diagnostics.EventLog]::SourceExists($LogSource))
     {
         $confirmation = Read-Host "The LogSource $LogSource already exists. Are you Sure You Want To Proceed:"
+
         if ($confirmation -eq 'y') 
         {
             return [EventViewer]::new($LogName, $LogSource)
