@@ -16,6 +16,33 @@ enum EventId
     FailureAudit = 1005
 }
 
+Class DateTimeValidation 
+{
+    static [string] $DateTimePattern
+
+    static [bool] validateDateTimePatterns([string]$Pattern)
+    {
+        $TimePatterns = [System.Globalization.DateTimeFormatInfo]::CurrentInfo
+
+        foreach ($item in $TimePatterns.GetAllDateTimePatterns())
+        {
+            if ($Pattern -eq $item)
+            {
+                [DateTimeValidation]::DateTimePattern = $Pattern
+                return $true
+            }
+        }
+        return $false
+    }
+}
+
+class Configuration 
+{
+    
+
+}
+
+
 class Log 
 {
 
@@ -73,13 +100,12 @@ class Log
     }
 }
 
+
+
 class EventViewer : Log
 {
     [string]$LogName
     [string]$LogSource
-    [string]$CategoryResourceFile
-    [string]$MessageResourceFile
-    [string]$ParameterResourceFile
     [string[]]$ComputerName
     [EntryType]$EntryType
     [EventId]$EventId
@@ -94,32 +120,6 @@ class EventViewer : Log
             $params = @{
                 LogName               = $this.LogName
                 Source                = $this.LogSource
-            }
-        
-            New-EventLog @params
-        }
-        else
-        {
-            Write-Warning -Message "The LogSource of $LogSource already exists"
-        }
-    }
-
-    EventViewer([string]$LogName, [string]$LogSource, [boolean]$ResourceFile)
-    {
-        $this.LogName   = $LogName
-        $this.LogSource = $LogSource
-
-        if(!([System.Diagnostics.EventLog]::SourceExists($LogSource)))
-        {
-            $params = @{
-                LogName               = $LogName
-                Source                = $LogSource
-            }
-
-            if ($ResourceFile)
-            {
-                $ResourceReturn = $this.CheckResourceFileIsSet()
-                $params.Add($ResourceReturn)
             }
         
             New-EventLog @params
@@ -149,28 +149,6 @@ class EventViewer : Log
         {
             Write-Warning -Message "The LogSource of $LogSource already exists"
         }
-    }
-
-    [System.Management.Automation.PSCustomObject] CheckResourceFileIsSet()
-    {
-        $param = New-Object -TypeName PSCustomObject
-
-        if ($this.CategoryResourceFile)
-        {
-            $param | Add-Member –MemberType NoteProperty –Name CategoryResourceFile –Value $($this.CategoryResourceFile)
-        }
-
-        if ($this.MessageResourceFile)
-        {
-            $param | Add-Member –MemberType NoteProperty –Name MessageResourceFile –Value $($this.MessageResourceFile)
-        }
-
-        if ($this.ParameterResourceFile)
-        {
-            $param | Add-Member –MemberType NoteProperty –Name ParameterResourceFile –Value $($this.ParameterResourceFile)
-        }
-
-        return $param
     }
 
     SetLogName([string]$LogName)
